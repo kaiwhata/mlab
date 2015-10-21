@@ -19,7 +19,7 @@ Once you have commandline `bq` the command `bq ls measurement-lab:m_lab` now sho
   nl_2014_05                    TABLE  
   nz_all                        TABLE  
 ```
-`bq show measurement-lab:m_lab.ndt_tests_per_day_per_ip'`then shows something like:
+`bq show measurement-lab:m_lab.ndt_tests_per_day_per_ip` then shows something like:
 ```
    Last modified            Schema            Type   Expiration  
  ----------------- ------------------------- ------ ------------ 
@@ -76,9 +76,11 @@ The .meta file contains the following fields:
 * client.version: 
 * client.utorrent.version: 
 
-####.s2c_snaplog/.c22_snaplog 
+####.s2c_snaplog/.c2s_snaplog 
 These file contain a header of the form: `2.5.27 201001301335 net100`
+
 Followed by `/spec`,`/read`, `/tune` field and then: `----Begin-Snap-Data----`
+
 I suggest `head -n 500 filename.s2c_snaplog` if you want more detail.
 
 ####Cputime
