@@ -107,6 +107,7 @@ The relevant fields the Mlab team seems to use in much of their visualizations a
 * Reciever-limited time ratio
 * Round Trip Time (RcvRTT, CountRTT, SumRTT, MinRTT, MaxRTT, RTTVar, SmoothedRTT, SampleRTT)
 * Upload Throughput
+* Oh and the visualization I'm talking about are available online here and are pretty well....pretty.
 
 ####Cputime
 A series of 0.1s timesteps followed by 4 int columns e.g.:
