@@ -93,7 +93,7 @@ These file contain a header of the form: `2.5.27 201001301335 net100`
 
 Followed by `/spec`,`/read`, `/tune` field and then: `----Begin-Snap-Data----`
 
-I suggest `head -n 500 filename.s2c_snaplog` if you want more detail.
+I suggest `head -n 168 filename.s2c_snaplog` if you want the entire header and anytime beyond that for the testfile to start speaking in tongues.
 
 ####Cputime
 A series of 0.1s timesteps followed by 4 int columns e.g.:
