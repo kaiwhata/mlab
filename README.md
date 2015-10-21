@@ -98,15 +98,15 @@ https://cloud.google.com/bigquery/docs/tcp-kis.txt.
 I suggest `head -n 168 filename.s2c_snaplog` if you want the entire header and anytime beyond that for the testfile to start speaking in tongues.
 
 The relevant fields the Mlab team seems to use in much of their visualizations are (in no particular order):
-* Download Throughput
-* Network-limited time ratio
-* Number of tests
-* Packet Retransmission
-* Percentage of Tests in Congestion Avoidance
-* Reciever Window Scale
-* Reciever-limited time ratio
-* Round Trip Time (RcvRTT, CountRTT, SumRTT, MinRTT, MaxRTT, RTTVar, SmoothedRTT, SampleRTT)
-* Upload Throughput
+* [Download Throughput](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#download-throughput)
+* [Network-limited time ratio](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#network-limited-ratio-and-client-limited-time-ratio)
+* [Number of tests](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#number-of-tests)
+* [Packet Retransmission](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#packet-retransmission)
+* [Percentage of Tests in Congestion Avoidance](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#percentage-of-tests-that-reached-congestion)
+* [Reciever Window Scale](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#receiver-window-scale)
+* [Reciever-limited time ratio](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#network-limited-ratio-and-client-limited-time-ratio)
+* [Round Trip Time](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#round-trip-time-rtt)
+* [Upload Throughput](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md#upload-throughput)
 Oh and the visualizations I'm talking about are available online here [here](http://www.google.com/publicdata/explore?ds=e9krd11m38onf_&ctype=m&strail=false&bcs=d&nselm=s&met_s=number_of_tests&scale_s=lin&ind_s=false&ifdim=country&hl=en_US&dl=en_US&ind=false&xMax=180&xMin=-180&yMax=-54.423985288271695&yMin=81.24033645136825&mapType=t&icfg&iconSize=0.5#!ctype=m&strail=false&bcs=d&nselm=s&met_s=rtt&scale_s=lin&ind_s=false&ifdim=country&hl=en_US&dl=en_US&ind=false) and are pretty well....pretty.
 Finally they also kindly specify how they calculate each of their metrics (in BigQuery syntax rather than from the raw data but they're comparable at least) [here](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md).
 
