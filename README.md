@@ -4,7 +4,19 @@ This document is intended to bring the reader up to speed with current state of 
 It is up to date as of October 2015 (unlike the core Mlab documentation (https://github.com/m-lab/mlab-wikis/blob/master/HowToAccessMLabData.md) which apppears not have been updated since 2010).
 
 ##BigQuery 
-Once you have commandline `bq` the command `bq ls measurement-lab:m_lab` now shows the following:
+Once you have commandline `bq` you have read acess to the public Mlab datasets and tables (but not the data itself)
+
+###Mlab BigQuery Datasets
+The command `bq ls measurement-lab:` current shows the following two datasets:
+```
+  datasetId  
+ ----------- 
+  ic2012     
+  m_lab      
+```
+
+###Mlab BiqQuery Tables
+The command `bq ls measurement-lab:m_lab` now shows the following:
 ```
              tableId             Type   
  ----------------------------- ------- 
