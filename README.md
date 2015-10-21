@@ -89,9 +89,11 @@ The .meta file contains the following fields:
 * client.utorrent.version: 
 
 ####.s2c_snaplog/.c2s_snaplog 
-These file contain a header of the form: `2.5.27 201001301335 net100`
+These file contain a header of the form: `2.5.27 201001301335 net100` 
 
-Followed by `/spec`,`/read`, `/tune` field and then: `----Begin-Snap-Data----`
+Followed by `/spec`,`/read`, `/tune` fields and then: `----Begin-Snap-Data----`
+Each entry in the `/spec`, `/read` and `\tune` corresponds to a Web100 field and variables listed in full here:
+https://cloud.google.com/bigquery/docs/tcp-kis.txt.
 
 I suggest `head -n 168 filename.s2c_snaplog` if you want the entire header and anytime beyond that for the testfile to start speaking in tongues.
 
