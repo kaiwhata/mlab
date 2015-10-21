@@ -97,6 +97,17 @@ https://cloud.google.com/bigquery/docs/tcp-kis.txt.
 
 I suggest `head -n 168 filename.s2c_snaplog` if you want the entire header and anytime beyond that for the testfile to start speaking in tongues.
 
+The relevant fields the Mlab team seems to use in much of their visualizations are (in no particular order):
+* Download Throughput
+* Network-limited time ratio
+* Number of tests
+* Packet Retransmission
+* Percentage of Tests in Congestion Avoidance
+* Reciever Window Scale
+* Reciever-limited time ratio
+* Round Trip Time (RcvRTT, CountRTT, SumRTT, MinRTT, MaxRTT, RTTVar, SmoothedRTT, SampleRTT)
+* Upload Throughput
+
 ####Cputime
 A series of 0.1s timesteps followed by 4 int columns e.g.:
 * 0.00 0 0 0 0
