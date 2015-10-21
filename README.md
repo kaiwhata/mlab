@@ -107,7 +107,8 @@ The relevant fields the Mlab team seems to use in much of their visualizations a
 * Reciever-limited time ratio
 * Round Trip Time (RcvRTT, CountRTT, SumRTT, MinRTT, MaxRTT, RTTVar, SmoothedRTT, SampleRTT)
 * Upload Throughput
-* Oh and the visualization I'm talking about are available online here [here](http://www.google.com/publicdata/explore?ds=e9krd11m38onf_&ctype=m&strail=false&bcs=d&nselm=s&met_s=number_of_tests&scale_s=lin&ind_s=false&ifdim=country&hl=en_US&dl=en_US&ind=false&xMax=180&xMin=-180&yMax=-54.423985288271695&yMin=81.24033645136825&mapType=t&icfg&iconSize=0.5#!ctype=m&strail=false&bcs=d&nselm=s&met_s=rtt&scale_s=lin&ind_s=false&ifdim=country&hl=en_US&dl=en_US&ind=false) and are pretty well....pretty.
+Oh and the visualizations I'm talking about are available online here [here](http://www.google.com/publicdata/explore?ds=e9krd11m38onf_&ctype=m&strail=false&bcs=d&nselm=s&met_s=number_of_tests&scale_s=lin&ind_s=false&ifdim=country&hl=en_US&dl=en_US&ind=false&xMax=180&xMin=-180&yMax=-54.423985288271695&yMin=81.24033645136825&mapType=t&icfg&iconSize=0.5#!ctype=m&strail=false&bcs=d&nselm=s&met_s=rtt&scale_s=lin&ind_s=false&ifdim=country&hl=en_US&dl=en_US&ind=false) and are pretty well....pretty.
+Finally they also kindly specify how they calculate each of their metrics (in BigQuery syntax rather than from the raw data but they're comparable at least) [here](https://github.com/m-lab/mlab-wikis/blob/master/PDEChartsNDT.md).
 
 ####Cputime
 A series of 0.1s timesteps followed by 4 int columns e.g.:
