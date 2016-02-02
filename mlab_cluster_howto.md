@@ -230,6 +230,23 @@ I have included some bash scripts to create the tables above and then populate t
 File available [here](https://github.com/kaiwhata/mlab/blob/master/text_bash_hive_ORC_script_v2.sh) but also requires [this](https://github.com/kaiwhata/mlab/blob/master/variable_types.txt) for the list of data format types.
 Check the repositories for the latest versions.
 
+##Example queries
+
+
+
+
+##Basic Security
+What I would consider a minimal level of security is enabling a simple firewall and blocking all ports not explicitly being used by hadoop or ssh. Simplest way to do this is through the excellently named Uncomplicated Firewall ```sudo apt-get install ufw```.
+From looking at the ports above we can see that by default we need to allow 9000 (for master communications with the jobtracker daemon), 54311 (for mapreduce jobs) and 22 (for SSH control of each node). Enabling these with ```ufw``` is trivial on all nodes:
+```sudo ufw allow 22```
+
+```sudo ufw allow 9000```
+
+```sudo ufw allow 54311```
+
+```sudo ufw enable```
+
+Expect a confirmation request for the final command if you're controlling the node through SSH. Also be aware that whilst hadoop seems to mostly use these ports (or any others you set instead of the defaults), other distributed archtectures (most notably ```mpi```) open and close a wide range of ports and required more detailed firewall configurations.
 
 Next Steps:
 - [ ] Upgrade backend from Mapreduce to Tez.
