@@ -209,6 +209,7 @@ There’s a chance we could improve storage and performance further by increasin
 
 ##Scripts
 I have included some bash scripts to create the tables above and then populate them with .gzipped Mlab data files.
+File available [here](https://github.com/kaiwhata/mlab/blob/master/text_bash_hive_ORC_script_v2.sh) but also requires [this](https://github.com/kaiwhata/mlab/blob/master/variable_types.txt) for the list of data format types.
 Check the repositories for the latest versions.
 
 
