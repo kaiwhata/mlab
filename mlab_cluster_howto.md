@@ -213,10 +213,10 @@ Check the repositories for the latest versions.
 
 
 Next Steps:
- [ ] Upgrade backend from Mapreduce to Tez.
- [ ] Check performance gains by increasing compression chunk size closer to default value.
- [ ] Setup machine image for cloning nodes (instead of doing an install by hand each time). 
- [ ] Replace unetbootin with functional dd commands.
- [ ] Run more tests on more machines an check scaling performace.
- [ ] Test performance on join queries.
- [ ] Write tutorials for the same process for WEKA (Machine Learning) and GERRIS (fluid modelling)
+- [ ] Upgrade backend from Mapreduce to Tez.
+- [ ] Check performance gains by increasing compression chunk size closer to default value.
+- [ ] Setup machine image for cloning nodes (instead of doing an install by hand each time). 
+- [ ] Replace unetbootin with functional dd commands.
+- [ ] Run more tests on more machines an check scaling performace.
+- [ ] Test performance on join queries.
+- [ ] Write tutorials for the same process for WEKA (Machine Learning) and GERRIS (fluid modelling)
