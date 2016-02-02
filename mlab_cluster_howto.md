@@ -232,12 +232,28 @@ Check the repositories for the latest versions.
 
 ##Example queries
 
+We ran two example queries designated SIMPLE and COUNTRIES to test the performance of the cluster. An additional JOIN example is being written and tested currently. These tests are based off the examples made by the mlab team available at their [BigQuery data](https://github.com/m-lab/mlab-wikis/blob/master/BigQueryMLabDataset.md) page.
 
+SIMPLE example query which returns 11308196 for 01 January 2015 Mlab data: ```SELECT Count(*) FROM mlab.temp_orc;```  
+
+COUNTRIES example query which returns 203 rows for 01 January 2015 Mlab data: ```SELECT connection_spec_client_geolocation_country_name, COUNT(connection_spec_client_geolocation_country_name) FROM mlab.temp_orc GROUP BY connection_spec_client_geolocation_country_name; ```
+
+We include some data about performance and storage requirements below. These should only be taken as rough guides to performance as each experiment was only run twice.
+
+| Setup Details (1 day of Mlab data) | Table population time | SIMPLE query  | COUNTRIES query | Hadoop Disk Usage |
+| ------------- |:---------------------:| -------------:| ---------------:| ----------:|
+| Gunzipped CSV Data      | 346 s | 172 s | 182 s | 19 GB|
+| Gzipped CSV Data (direct read from gzip) | 5 s | 175 s | 182 s | 19 GB|
+| Parquet (Gunzip and conversion to parquet) | 2366 s | 5 s | 9 s | 858 MB|
+| Typed Parquet (Gunzip and conversion to parquet) | 3070 s  | 6 s | 9 s | 888 MB|
+| Typed ORC (Direct read from gzip) | 993 s | 6 s | 9 s | --- |
+| Typed ORC with compression (Direct read from gzip)| 968 s | 5 s | 8 s | 567 MB|
 
 
 ##Basic Security
 What I would consider a minimal level of security is enabling a simple firewall and blocking all ports not explicitly being used by hadoop or ssh. Simplest way to do this is through the excellently named Uncomplicated Firewall ```sudo apt-get install ufw```.
 From looking at the ports above we can see that by default we need to allow 9000 (for master communications with the jobtracker daemon), 54311 (for mapreduce jobs) and 22 (for SSH control of each node). Enabling these with ```ufw``` is trivial on all nodes:
+
 ```sudo ufw allow 22```
 
 ```sudo ufw allow 9000```
@@ -246,7 +262,11 @@ From looking at the ports above we can see that by default we need to allow 9000
 
 ```sudo ufw enable```
 
-Expect a confirmation request for the final command if you're controlling the node through SSH. Also be aware that whilst hadoop seems to mostly use these ports (or any others you set instead of the defaults), other distributed archtectures (most notably ```mpi```) open and close a wide range of ports and required more detailed firewall configurations.
+```sudo ufw status```
+
+```sudo ufw default deny```
+
+Expect a confirmation request for the final command if you're controlling the node through SSH. If you have any immediate problems after enableing ```ufw``` try also allowing communications through port 54310 (this is a legacy hadoop port). Also be aware that whilst hadoop seems to mostly use these ports (or any others you set instead of the defaults), other distributed archtectures (most notably ```mpi```) open and close a wide range of ports and required more detailed firewall configurations.
 
 Next Steps:
 - [ ] Upgrade backend from Mapreduce to Tez.
@@ -254,5 +274,6 @@ Next Steps:
 - [ ] Setup machine image for cloning nodes (instead of doing an install by hand each time). 
 - [ ] Replace unetbootin with functional dd commands.
 - [ ] Run more tests on more machines an check scaling performace.
-- [ ] Test performance on join queries.
-- [ ] Write tutorials for the same process for WEKA (Machine Learning) and GERRIS (fluid modelling)
+- [ ] Test performance on JOIN queries.
+- [ ] Complete tutorial section on hadoop configuration tweaking (HADOOP_HEAPSIZE, dfs.block.size, mapred.task.tracker.map.tasks.maximum, mapred.task.tracker.reduce.tasks.maximum, mapred.reduce.tasks, mapred.map.tasks, namenode.handler.count, datanode.handler.count)
+- [ ] Write tutorials for the same process for WEKA (Machine Learning), LUSTRE (supercomputing) and GERRIS (fluid modelling)
