@@ -194,7 +194,7 @@ Tables can be deleted by:
 
 ##Performance and data storage
 Mlab data can be uploaded and stored as strings in csv format, however this leads to poor performance (about 3 minutes for a simple count query and requiring 19 GB of disk space to store one month of Mlab data).
-Instead we recommend filtering data by the fields outlined at and storing the data as compressed ORC, a columnar file storage system. (Parquet can also be used but ORC gives faster performance and uses less disk space)
+Instead we recommend filtering data by the fields outlined [here](https://github.com/m-lab/mlab-wikis/blob/master/BigQueryMLabDataset.md) and storing the data as compressed ORC, a columnar file storage system. (Parquet can also be used but ORC gives faster performance and uses less disk space)
 With the environmental variable $FIELDS set to the field headers stripped from the mlab data, the following will create a table (temp_orc) using the appropriate compression and storage type:
 
 ```CREATE TABLE mlab.temp_orc (${FIELDS}) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' STORED AS ORC TBLPROPERTIES('orc.compress.size'='8192', 'orc.compress'='SNAPPY','skip.header.linder.line.count'='1');```
