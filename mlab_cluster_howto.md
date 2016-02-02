@@ -31,7 +31,7 @@ Replace this with the username of your use in the commands and code below.
 On all machines ip addresses and associated names must be set in the following file
 ```sudo nano /etc/hosts```
 
-An example from a two machine cluster (master and slave1) is included below
+An example from a two machine cluster (master and slave1) is included below. The IP addresses of your machines will be necessarily different from those below. You can obtain them by runnin ```ifconfig``` on each machine respectively.
    127.0.0.1 localhost
    127.0.1.1 <machinename>
    
