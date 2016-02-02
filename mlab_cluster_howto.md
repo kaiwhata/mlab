@@ -3,6 +3,7 @@
 This tutorial should take you through step-by-step instructions for creating a Hive cluster capable of running queries on a month of Mlab data in a matter of minutes on a couple of reasonable boxes.
 
 The general outline is:
+
 1. Install Ubuntu Server 14.04.3 on each box.
 
 2. Get Hadoop
@@ -140,24 +141,33 @@ On the master machine create the following directory structures from the root ha
 ```bin/hadoop fs -chmod g+w   /user/bambi/warehouse```
 
 If at any stage your datanode becomes corrupted you can erase the entire thing by:
+
 ``` bin/stop-all.sh ```
-```rm -Rf /tmp/hadoop-username/```\*  (NOT /tmp\*)
+
+```rm -Rf /tmp/hadoop-username/\*```  (NOT /tmp\*)
+
 ```bin/hdfs namenode -format ```
+
 ####DON'T DO THIS UNLESS YOU HAVE NO OTHER CHOICE.
 
 ##Acquiring Hive
 Grab Hive by the following commands:
+
 ```wget http://www.us.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz ```
+
 ```sudo tar -xzvf apache-hive-1.2.1-bin.tar.gz ```
+
 ```sudo chown -R bambi apache-hive-1.2.1-bin ```
 
 ##Setting up environmental variables and appending to $PATH
 ``` nano ~/.bashrc ```
 And append the following lines to the bottom of the file:
+
     export HIVE_HOME=/home/fogbank/apache-hive-1.2.1-bin/
     export HADOOP_HOME=/home/fogbank/hadoop-2.7.1
     export PATH=$HIVE_HOME/bin:$PATH
     export PATH=$HADOOP_HOME/bin:$PATH
+   
 Now reload the environmental variables using:
 ```source ~/.bashrc```
 
@@ -170,12 +180,15 @@ To actually run SQL queries we simply use the following (once the HDFS has alrea
 ```beeline -u jdbc:hive2://```
 
 ##Hive database and table creation and deletion commands
-Selec a specific database to use with:
+Select a specific database to use with:
 ```hive> use mlab;```
+
 Creating a table (called pokes with the fields foo and bar) is now simple using SQL syntax:
 ```hive> CREATE TABLE pokes (foo INT, bar STRING);```
+
 Tables can be displayed using:
 ```hive> SHOW TABLES;```
+
 Tables can be deleted by:
 ```hive> DROP TABLE pokes;```
 
@@ -183,7 +196,9 @@ Tables can be deleted by:
 Mlab data can be uploaded and stored as strings in csv format, however this leads to poor performance (about 3 minutes for a simple count query and requiring 19 GB of disk space to store one month of Mlab data).
 Instead we recommend filtering data by the fields outlined at and storing the data as compressed ORC, a columnar file storage system. (Parquet can also be used but ORC gives faster performance and uses less disk space)
 With the environmental variable $FIELDS set to the field headers stripped from the mlab data, the following will create a table (temp_orc) using the appropriate compression and storage type:
+
 ```CREATE TABLE mlab.temp_orc (${FIELDS}) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' STORED AS ORC TBLPROPERTIES('orc.compress.size'='8192', 'orc.compress'='SNAPPY','skip.header.linder.line.count'='1');```
+
 PLease note that if you store as ORC with compression - using the default (or otherwise incorrect compression numbers can result in queries failing). 
 If you suspect this, attempt to create an 'uncompressed' ORC table.
 With current compression ORC can store 19GB (roughly a month) of mlab data in 570 MB of disk space and run a simple query on it in between 5-7 seconds.
