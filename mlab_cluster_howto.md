@@ -41,8 +41,11 @@ and if you haven’t done it before also generate the public SSH key on the mast
 ##Hadoop install
 Run the following ubuntu commands in the terminal:
 ```sudo apt-get update```
+
 ```sudo apt-get upgrade```
+
 ```sudo apt-get install ssh rsync git```
+
 ```sudo apt-get install openjdk-7-jdk```
 
 We also recommend the following for debugging:
@@ -117,16 +120,22 @@ Yes I learnt that the hard way.
 On the master machine create the following directory structures from the root hadoop directory. This process does NOT need to be repeated on slave machines.
 
 ```bin/hadoop fs -mkdir /tmp```
+
 ```bin/hadoop fs -mkdir /user ```
+
 ```bin/hadoop fs -mkdir /user/bambi```
+
 ```bin/hadoop fs -mkdir /user/bambi/warehouse```
+
 ```bin/hadoop fs -chmod g+w   /tmp```
+
 ```bin/hadoop fs -chmod g+w   /user/bambi```
+
 ```bin/hadoop fs -chmod g+w   /user/bambi/warehouse```
 
 If at any stage your datanode becomes corrupted you can erase the entire thing by:
 ```bin/stop-all.sh```
-```rm -Rf /tmp/hadoop-username/*``` (NOT /tmp*)
+```rm -Rf /tmp/hadoop-username/```\*  (NOT /tmp\*)
 ```bin/hdfs namenode -format```
 ####DON'T DO THIS UNLESS YOU HAVE NO OTHER CHOICE.
 
