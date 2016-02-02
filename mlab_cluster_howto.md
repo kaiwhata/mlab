@@ -1,22 +1,24 @@
 #How to install Hive onto an Ubuntu server cluster and import Mlab data.
 
-This tutorial should take you through step-by-step instructions for creating a Hive cluster capable of running queries on a month of Mlab data in a matter of minutes on a couple of reasonable boxes.
+This tutorial should take you through step-by-step instructions for creating a Hive cluster capable of running queries on a month of Mlab data in a matter of minutes on a couple of reasonable boxes. We ran these test on 2x 8GB, 3.4 GHz i7 pcs connect by a Linksys SE2800 switch. This process also runs on a 1GB, 2.8 GHz Pentium D (allbeit significantly slower).
 
 The general outline is:
 
 1. Install Ubuntu Server 14.04.3 on each box.
+ 
+2. Download mlab dataset 
 
-2. Get Hadoop
+3. Get Hadoop
 
-3. Get Hive and connect to Hadoop
+4. Get Hive and connect to Hadoop
 
-4. Create tables and populate with data from Mlab.csv
+5. Create tables and populate with data from Mlab.csv
 
-5. Run SQL queries
+6. Run SQL queries
 
-6. ...
+7. ...
 
-7. Profit!
+8. Profit!
 
 ##Ubuntu Server install
 Create a bootable flashdrive with Ubuntu Server 14.04.3 on it (iso downloaded from: http://www.ubuntu.com/download/server) and use it to install on all nodes.
@@ -44,6 +46,22 @@ You will need to add the master’s public SSH key to the slave’s authorized_k
 bambi@master$ ssh-copy-id -i $HOME/.ssh/id_rsa.pub bambi@slave1 
 and if you haven’t done it before also generate the public SSH key on the master first
 ```ssh-keygen -t rsa -P "" ```
+
+## The .gzipped Mlab data can be downloaded direct via a web UI here: https://console.developers.google.com/storage/browser/m-lab/experimental-hive-csv/. 
+I recommend also getting the Google Cloud CLI by signing up online and then:
+```sudo apt-get install curl ```
+
+```curl https://sdk.cloud.google.com | bash```
+
+```exec -l $SHELL ```
+
+```gcloud init ```
+
+Individual queries can be run by:
+```bq shell```
+
+```SELECT * FROM [plx.google:m_lab.2010_01.all] WHERE web100_log_entry.log_time > 1262304000 AND web100_log_entry.log_time < 1262476800 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';```
+####Beware of data usage costs and the 1GB download limit for the CLI.
 
 ##Hadoop install
 Run the following ubuntu commands in the terminal:
