@@ -58,12 +58,12 @@ Move into directory
 ```cd hadoop-2.7.1```
 Set root of java installation by editing etc/hadoop/hadoop-env.sh 
 ```sudo nano etc/hadoop/hadoop-env.sh```
-
+Then update the following lines
     # set to the root of your Java installation
     export JAVA_HOME=/usr
 
 Now execute hadoop to check everything downloaded ok
-```bin\hadoop```
+``` bin\hadoop ```
 
 We followed the file setup rocedures outlined [here](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/SingleCluster.html#Pseudo-Distributed_Operation) but in summary they are:
 1. Edit etc/hadoop/slaves with ```sudo nano etc/hadoop/slaves``` and includes all nodes with datanodes to be run on them.
