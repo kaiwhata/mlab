@@ -36,7 +36,7 @@ Check master can login to slave using ```ssh slave1```.
 You will need to add the master’s public SSH key to the slave’s authorized_keys file:
 bambi@master$ ssh-copy-id -i $HOME/.ssh/id_rsa.pub bambi@slave1 
 and if you haven’t done it before also generate the public SSH key on the master first
-```ssh-keygen -t rsa -P ""```
+```ssh-keygen -t rsa -P "" ```
 
 ##Hadoop install
 Run the following ubuntu commands in the terminal:
